@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router'
+import { container, navContainer, link } from './styles.css'
 
 function NavLinks ({isAuthed}) {
   return isAuthed === true ?
@@ -19,9 +20,10 @@ function ActionLinks ({isAuthed}) {
   </ul> :
   <ul>
     <li><Link to='/'>{`Home`}</Link></li>
-    <li><Link to='/auth'>{`Authenticated`}</Link></li>
+    <li><Link to='/auth'>{`Authenticate`}</Link></li>
   </ul>
 }
+
 export default function Navigation({isAuthed}) {
   return (
     <div>
