@@ -1,210 +1,204 @@
-//Users
-
+// Users
 {
   type: AUTH_USER,
-    uid,
+  uid,
 }
 
 {
   type: UNAUTH_USER,
-
 }
 
 {
   type: FETCHING_USER,
-
 }
 
 {
   type: FETCHING_USER_FAILURE,
-    error: `Error fetching user`
+  error: 'Error fetching user.',
 }
 
 {
   type: FETCHING_USER_SUCCESS,
-    uid,
-    user,
-    timestamp
+  uid,
+  user,
+  timestamp,
 }
 
 
-//Ducks
-
-
+// Ducks
 {
-  type: FETCHING_DUCK
+  type: FETCHING_DUCK,
 }
 
 {
   type: FETCHING_DUCK_ERROR,
-    error: `Error Fetching Duck`
+  error: 'Error fetching Duck',
 }
 
 {
   type: FETCHING_DUCK_SUCCESS,
- duck
+  duck,
 }
 
 {
-  type: REMOVE_FETCHING
+  type: REMOVE_FETCHING,
 }
 
 {
   type: ADD_DUCK,
-    duck
+  duck,
 }
 
 {
   type: ADD_MULTIPLE_DUCKS,
-    ducks
-
+  ducks,
 }
 
-//FEED ACTIONS
 
+// Feed
 {
-  type: SETTING_FEED_LISTENER
+  type: SETTING_FEED_LISTENER,
 }
 
 {
   type: SETTING_FEED_LISTENER_ERROR,
-  error: `Error fetching feeds.`
+  error: 'Error fetching feeds.',
 }
 
 {
   type: SETTING_FEED_LISTENER_SUCCESS,
-  duckIds
+  duckIds,
 }
 
 {
-  type:  ADD_NEW_DUCK_ID_TO_FEED,
-  duckId
+  type: ADD_NEW_DUCK_ID_TO_FEED,
+  duckId,
 }
 
-
 {
-  type: RESET_NEW_DUCKS_AVAILABLE
+  type: RESET_NEW_DUCKS_AVAILABLE,
 }
 
 
 //Listeners
-
 {
   type: ADD_LISTENER,
-    listenerId
+  listenerId,
 }
+
 
 //Modal
 {
-  type: OPEN_MODAL
+  type: OPEN_MODAL,
 }
 
-{
-  type: CLOSE_MODAL
+  {
+  type: CLOSE_MODAL,
 }
 
 {
   type: UPDATE_DUCK_TEXT,
-    newDuckText
-}
-
-//REPLIES
-{
-  type: FETCHING_REPLIES
-}
-
-{
-  type: FETCHING_REPLIES_ERROR,
-    error: `Error fetching replies`
-}
-
-{
-  type: FETCHING_REPLIES_SUCCESS
-  replies,
-    duckId,
-    lastUpdated: Date.now()
+  newDuckText,
 }
 
 
+//Replies
 {
   type: ADD_REPLY,
-    duckId,
-    reply
+  duckId,
+  reply,
 }
 
 {
   type: ADD_REPLY_ERROR,
-    error: `Error adding reply`
+  error: 'Error adding reply',
 }
 
 {
   type: REMOVE_REPLY,
-    replyId
+  replyId,
 }
 
-// LIKE COUNT
 {
-  type: FETCHING_COUNT_SUCCESS,
-    duckId,
-    count
+  type: FETCHING_REPLIES,
+}
+
+{
+  type: FETCHING_REPLIES_ERROR,
+  error: 'Error fetching replies',
+}
+
+{
+  type: FETCHING_REPLIES_SUCCESS,
+  replies,
+  duckId,
+  lastUpdated: Date.now(),
+}
+
+
+// likeCount
+{
+  type: FETCHING_COUNT,
 }
 
 {
   type: FETCHING_COUNT_ERROR,
-    error: `Error fetching duck's like count`
+  error: 'Error fetching duck\'s like count',
 }
 
 {
-  type: FETCHING_COUNT
+  type: FETCHING_COUNT_SUCCESS,
+  duckId,
+  count,
 }
 
 
-//USERS DUCKS
+//usersDucks
 {
   type: FETCHING_USERS_DUCKS,
-    uid
+  uid,
 }
-
-
 
 {
   type: FETCHING_USERS_DUCKS_ERROR,
-    error: `Error fetching Users Duck Ids`
+  error: 'Error fetching Users Duck Ids',
 }
-
 
 {
   type: FETCHING_USERS_DUCKS_SUCCESS,
-    uid, duckIds, lastUpdated
+  uid,
+  duckIds,
+  lastUpdated,
 }
 
 {
   type: ADD_SINGLE_USERS_DUCK,
-    uid, duckIds, lastUpdated
+  uid,
+  duckId,
 }
 
-// USERS LIKES
 
-{
-  type: FETCHING_LIKES
-}
-
-{
-  type: FETCHING_LIKES_ERROR,
-    error: `Error fetching likes`
-}
-
-{
-  type: FETCHING_LIKES_SUCCESS,
-    likes
-}
-
+// usersLikes
 {
   type: ADD_LIKE,
-    duckId
+  duckId,
 }
 
 {
   type: REMOVE_LIKE,
-    duckId
+  duckId,
+}
+
+{
+  type: FETCHING_LIKES,
+}
+
+{
+  type: FETCHING_LIKES_ERROR,
+  error: 'Error fetching likes',
+}
+
+{
+  type: FETCHING_LIKES_SUCCESS,
+  likes,
 }
