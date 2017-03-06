@@ -29,17 +29,5 @@
     "react/jsx-no-literals": 2,
     "react/self-closing-comp": 2,
     "react/sort-comp": 2
-  },
-}
-Contact GitHub API Training Shop Blog About
-© 2017 GitHub, Inc. Terms Privacy Security Status Help{
-  parser: "babel-eslint",
-  extends: "airbnb",
-  "plugins": [
-    "react"
-  ],
-  "rules": {
-    "max-len": [1, 120, 2, {ignoreComments: true}],
-    "prop-types": [2]
   }
 }
