@@ -6,7 +6,7 @@ class MainContainer extends Component {
   render() {
     return (
       <div className={container}>
-        <Navigation />
+        <Navigation isAuthed={false}/>
         <div className={innerContainer}>
           {this.props.children}
         </div>
