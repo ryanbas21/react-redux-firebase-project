@@ -8,7 +8,7 @@ import users from './redux/modules/users';
 import { checkIfAuthed } from './containers/helpers/auth';
 
 
-const store = createStore(users, applyMiddleware(thunk))
+const store = createStore(users, applyMiddleware(thunk));
 
 function checkAuth(nextState, replace) {
   const isAuthed = checkIfAuthed(store);

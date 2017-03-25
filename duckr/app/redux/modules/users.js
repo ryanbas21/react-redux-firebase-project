@@ -14,7 +14,7 @@ function authUser(uid) {
 }
 
 export function logoutAndUnauth() {
-  return dispatch  => {
+  return dispatch => {
     logout();
     dispatch(unauthUser());
   };
@@ -41,12 +41,12 @@ function fetchingUserFailure(error) {
 
 export function fetchAndHandleAuthedUser() {
   return dispatch => {
-    dispatch(fetchingUser())
-    return auth().then(user => {
-      dispatch(fetchingUserSuccess(user.uid,user,Date.now()));
-      dispatch(authUser(user.uid));
-      return user;
-    }).catch(err => this.props.fetchingUserFailure(err));
+    dispatch(fetchingUser());
+    return auth().then(({ user, credential }) => {
+      return dispatch(fetchingUserSuccess(user.uid, user, Date.now()))
+
+    }).then((user) => dispatch(authUser(user.uid)))
+    .catch(err => this.props.fetchingUserFailure(err));
   }
 }
 
@@ -89,6 +89,7 @@ const initialState = {
 export default function users(state = initialState, action) {
   switch (action.type) {
     case AUTH_USER :
+    console.log('running here');
       return {
         ...state,
         isAuthed: true,

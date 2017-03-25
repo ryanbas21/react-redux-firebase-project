@@ -1,18 +1,23 @@
+import firebase from 'firebase';
+import { ref, firebaseAuth } from 'config/constants';
+
 export default function auth() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({
-        name: 'Ryan',
-        avatar: 'https://static.giantbomb.com/uploads/original/4/42381/1196379-gas_mask_respirator.jpg',
-        uid: 'Ryan'
-      });
-    }, 2000)
-  });
+  return firebaseAuth().signInWithPopup(
+    new firebase.auth.FacebookAuthProvider()
+  );
 }
 
 export function logout () {
-  console.log('logged out');
+  return firebaseAuth().signInWithPopup(
+    new firebase.signout()
+  )
 }
 export function checkIfAuthed(store) {
   return store.getState().isAuthed
+}
+
+export function saveUser(user) {
+  return ref.child(`users/${user.uid}`) //ref is our root url, child is nesting itself in the database
+    .set(user).then(() => user);
+
 }
