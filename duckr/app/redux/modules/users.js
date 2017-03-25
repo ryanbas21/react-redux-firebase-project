@@ -1,4 +1,4 @@
-import auth from '../../containers/helpers/auth';
+import auth, { logout } from '../../containers/helpers/auth';
 const AUTH_USER = 'AUTH_USER';
 const UNAUTH_USER = 'UNAUTH_USER';
 const FETCHING_USER = 'FETCHING_USER';
@@ -10,6 +10,13 @@ function authUser(uid) {
   return {
     type: AUTH_USER,
     uid,
+  };
+}
+
+export function logoutAndUnauth() {
+  return dispatch  => {
+    logout();
+    dispatch(unauthUser());
   };
 }
 
