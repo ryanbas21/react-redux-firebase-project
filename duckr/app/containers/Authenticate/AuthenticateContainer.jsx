@@ -5,22 +5,24 @@ import { Authenticate } from 'components';
 import auth from '../helpers/auth';
 
 export default class AuthenticateContainer extends Component {
-  constructor(){
+  constructor() {
     super();
     this.handleAuth = this.handleAuth.bind(this);
   }
   handleAuth() {
-    auth().then((user) => {
+    auth().then(user => {
       console.log('authed User', user);
-    });
+      return user;
+    }).catch(err => console.log(err));
   }
   render() {
     return (
       <div>
         <Authenticate
           isFetching={false}
-          error=''
-          onAuth={this.handleAuth} />
+          error=""
+          onAuth={this.handleAuth}
+        />
       </div>
     );
   }

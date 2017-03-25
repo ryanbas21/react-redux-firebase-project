@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "production": "webpack -p",
-    "lint": "eslint app/.; exit 0",
+    "lint": "lint --cache --ignore-path .gitignore --ext .jsx,.js --format=node_modules/eslint-formatter-pretty .",
     "fix": "eslint --fix app/.; exit 0"
   },
   "repository": {
@@ -21,7 +21,14 @@
   },
   "homepage": "",
   "dependencies": {
-    "eslint-config-airbnb": "^14.1.0",
+    "eslint": "latest",
+    "eslint-config-airbnb": "latest",
+    "eslint-formatter-pretty": "^1.1.0",
+    "eslint-plugin-compat": "^1.0.0",
+    "eslint-plugin-import": "latest",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-react": "latest",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-router": "^2.0.1"
