@@ -35,7 +35,7 @@ function fetchingUserFailure(error) {
 export function fetchAndHandleAuthedUser() {
   return dispatch => {
     dispatch(fetchingUser())
-    auth().then(user => {
+    return auth().then(user => {
       dispatch(fetchingUserSuccess(user.uid,user,Date.now()));
       dispatch(authUser(user.uid));
       return user;

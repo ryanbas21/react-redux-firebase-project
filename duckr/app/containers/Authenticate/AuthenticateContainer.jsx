@@ -13,8 +13,12 @@ class AuthenticateContainer extends Component {
     super();
     this.handleAuth = this.handleAuth.bind(this);
   }
-  handleAuth() {
-    this.props.fetchAndHandleAuthedUser();
+  handleAuth(e) {
+    e.preventDefault();
+    this.props.fetchAndHandleAuthedUser()
+      .then(() =>
+        this.context.router.replace('feed')
+      ).catch(err => err);
   }
   render() {
     return (
@@ -34,6 +38,9 @@ AuthenticateContainer.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
   fetchAndHandleAuthedUser: PropTypes.func.isRequired
+};
+AuthenticateContainer.contextTypes = {
+  router: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
