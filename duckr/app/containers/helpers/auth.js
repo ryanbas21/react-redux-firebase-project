@@ -17,7 +17,6 @@ export function checkIfAuthed(store) {
 }
 
 export function saveUser(user) {
-  return ref.child(`users/${user.uid}`) //ref is our root url, child is nesting itself in the database
+  return ref.child(`users/${user.uid}`)
     .set(user).then(() => user);
-
 }
