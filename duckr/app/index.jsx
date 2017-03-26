@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import getRoutes from './config/routes';
@@ -8,7 +8,8 @@ import users from './redux/modules/users';
 import { checkIfAuthed } from './containers/helpers/auth';
 
 
-const store = createStore(users, applyMiddleware(thunk));
+const store = createStore(users, compose(applyMiddleware(thunk),
+  window.devToolsExtension ? window.devToolsExtension(): f => f))
 
 function checkAuth(nextState, replace) {
   if (store.getState().isFetching) {
