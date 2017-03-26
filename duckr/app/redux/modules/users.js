@@ -6,12 +6,18 @@ const UNAUTH_USER = 'UNAUTH_USER';
 const FETCHING_USER = 'FETCHING_USER';
 const FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS';
 const FETCHING_USER_FAILURE = 'FETCHING_USER_FAILURE';
-
+const REMOVE_FETCHING_USER = 'REMOVE_FETCHING_USER ';
 // actions
-function authUser(uid) {
+export function authUser(uid) {
   return {
     type: AUTH_USER,
     uid,
+  };
+}
+
+export function removeFetchingUser() {
+  return {
+    type: REMOVE_FETCHING_USER
   };
 }
 
@@ -56,7 +62,7 @@ export function fetchAndHandleAuthedUser() {
   };
 }
 
-function fetchingUserSuccess(uid, userSuccess, timestamp) {
+export function fetchingUserSuccess(uid, userSuccess, timestamp) {
   return {
     type: FETCHING_USER_SUCCESS,
     uid,
@@ -87,15 +93,19 @@ export function user(state = initialUserState, action) {
 }
 
 const initialState = {
-  isFetching: false,
+  isFetching: true,
   error: '',
   isAuthed: false,
   authedId: '',
 };
 export default function users(state = initialState, action) {
   switch (action.type) {
+    case REMOVE_FETCHING_USER :
+      return {
+        ...state,
+        isFetching: false,
+      };
     case AUTH_USER :
-    console.log('running here');
       return {
         ...state,
         isAuthed: true,

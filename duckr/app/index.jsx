@@ -11,6 +11,10 @@ import { checkIfAuthed } from './containers/helpers/auth';
 const store = createStore(users, applyMiddleware(thunk));
 
 function checkAuth(nextState, replace) {
+  if (store.getState().isFetching) {
+    return;
+  }
+
   const isAuthed = checkIfAuthed(store);
   const nextPathName = nextState.location.pathname;
 
