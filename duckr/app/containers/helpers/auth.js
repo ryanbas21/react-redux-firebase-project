@@ -7,10 +7,10 @@ export default function auth() {
   );
 }
 
-export function logout () {
+export function logout() {
   return firebaseAuth().signInWithPopup(
     new firebase.signout()
-  )
+  );
 }
 export function checkIfAuthed(store) {
   return store.getState().isAuthed

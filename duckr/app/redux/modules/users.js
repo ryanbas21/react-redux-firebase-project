@@ -37,23 +37,23 @@ function fetchingUser() {
 function fetchingUserFailure(error) {
   return {
     type: FETCHING_USER_FAILURE,
-    error: 'Error fetching user.',
+    error
   };
 }
 
-export function fetchAndHandleAuthedUser () {
-  return function (dispatch) {
-    dispatch(fetchingUser())
+export function fetchAndHandleAuthedUser() {
+  return (dispatch) => {
+    dispatch(fetchingUser());
     return auth().then(({ user, credential}) => {
       console.log(user);
-      const userData = user.providerData[0]
-      const userInfo = formatUserInfo(userData.displayName, userData.photoURL, user.uid)
-      return dispatch(fetchingUserSuccess(user.uid, userInfo, Date.now()))
+      const userData = user.providerData[0];
+      const userInfo = formatUserInfo(userData.displayName, userData.photoURL, user.uid);
+      return dispatch(fetchingUserSuccess(user.uid, userInfo, Date.now()));
     })
-    .then((user) => saveUser(user))
-    .then((user) => dispatch(authUser(user.uid)))
-    .catch((error) => dispatch(fetchingUserFailure(error)))
-  }
+    .then(user => saveUser(user))
+    .then(user => dispatch(authUser(user.uid)))
+    .catch(error => dispatch(fetchingUserFailure(error)));
+  };
 }
 
 function fetchingUserSuccess(uid, userSuccess, timestamp) {

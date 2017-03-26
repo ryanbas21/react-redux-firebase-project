@@ -9,9 +9,11 @@ Authenticate.propTypes = {
 };
 
 export default function Authenticate({ error, isFetching, onAuth }) {
-  return <div className="center-auth-button">
-    <h1 className={largeHeader}>{'Authenticate'}</h1>
-    <FacebookAuthButton isFetching={isFetching} onAuth={onAuth} />
-    {error ? <p className={errorMsg}>{error}</p> : null}
-  </div>
-};
+  return (
+    <div className="center-auth-button">
+      <h1 className={largeHeader}>{'Authenticate'}</h1>
+      <FacebookAuthButton isFetching={isFetching} onAuth={onAuth} />
+      {error ? <p className={errorMsg}>{error}</p> : null}
+    </div>
+  );
+}

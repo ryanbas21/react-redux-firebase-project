@@ -8,7 +8,6 @@ import { bindActionCreators } from 'redux';
 import * as userActionCreators from '../../redux/modules/users';
 
 class AuthenticateContainer extends Component {
-
   constructor() {
     super();
     this.handleAuth = this.handleAuth.bind(this);

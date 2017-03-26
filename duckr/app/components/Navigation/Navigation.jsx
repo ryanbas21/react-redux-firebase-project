@@ -8,10 +8,10 @@ Navigation.propTypes = (ActionLinks.propTypes = (NavLinks.propTypes = {
 
 function NavLinks({ isAuthed }) {
   return isAuthed === true
-    ? <ul>
-        <li><Link to="/" className={link}>{'Home'}</Link></li>
-      </ul>
-    : <noscript />;
+  ? <ul>
+    <li><Link to="/" className={link}>{'Home'}</Link></li>
+  </ul>
+  : <noscript />;
 }
 
 function ActionLinks({ isAuthed }) {
