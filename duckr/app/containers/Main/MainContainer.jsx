@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import { container, innerContainer } from './styles.css';
-import { Navigation } from 'components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Navigation } from '../../components';
+import { container, innerContainer } from './styles.css';
 import * as userActionCreators from '../../redux/modules/users';
 import { firebaseAuth } from '../../config/constants';
 import { formatUserInfo } from '../../containers/helpers/utils';

@@ -1,5 +1,5 @@
 const ADD_LISTENER = 'ADD_LISTENER';
-function addListener() {
+export function addListener(listenerId) {
   return {
     type: ADD_LISTENER,
     listenerId

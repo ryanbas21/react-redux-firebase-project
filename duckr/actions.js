@@ -144,29 +144,3 @@
   uid,
   duckId,
 }
-
-
-// usersLikes
-{
-  type: ADD_LIKE,
-  duckId,
-}
-
-{
-  type: REMOVE_LIKE,
-  duckId,
-}
-
-{
-  type: FETCHING_LIKES,
-}
-
-{
-  type: FETCHING_LIKES_ERROR,
-  error: 'Error fetching likes',
-}
-
-{
-  type: FETCHING_LIKES_SUCCESS,
-  likes,
-}
