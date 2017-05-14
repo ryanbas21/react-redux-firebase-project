@@ -1,15 +1,12 @@
-// Users
-
-
 
 // Ducks
 {
-  type: FETCHING_DUCK,
+  type: FETCHING_DUCK
 }
 
 {
   type: FETCHING_DUCK_ERROR,
-  error: 'Error fetching Duck',
+  error: 'Error fetching Duck'
 }
 
 {
@@ -56,12 +53,6 @@
   type: RESET_NEW_DUCKS_AVAILABLE,
 }
 
-
-//Listeners
-{
-  type: ADD_LISTENER,
-  listenerId,
-}
 
 
 //Modal

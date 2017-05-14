@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { default as ReactModal } from 'react-modal';
+import ReactModal from 'react-modal';
 import { formatDuck } from '../../containers/helpers/utils';
 import {
   newDuckTop,
