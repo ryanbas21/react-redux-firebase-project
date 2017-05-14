@@ -4,10 +4,6 @@
  *   Redux Schema
  *
  */
-
-
-
-
 {
   users: {
     isAuthed,

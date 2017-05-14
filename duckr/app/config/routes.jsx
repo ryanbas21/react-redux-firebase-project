@@ -6,7 +6,7 @@ import {
   AuthenticateContainer,
   FeedContainer,
   LogoutContainer
-} from 'containers';
+} from '../containers';
 
 export default function getRoutes(checkAuth) {
   return (

@@ -1,7 +1,4 @@
-import React, {
-  Component,
-  PropTypes
-} from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Authenticate } from 'components';
 import { bindActionCreators } from 'redux';
@@ -14,10 +11,10 @@ class AuthenticateContainer extends Component {
   }
   handleAuth(e) {
     e.preventDefault();
-    this.props.fetchAndHandleAuthedUser()
-      .then(() =>
-        this.context.router.replace('feed')
-      ).catch(err => err);
+    this.props
+      .fetchAndHandleAuthedUser()
+      .then(() => this.context.router.replace('feed'))
+      .catch(err => err);
   }
   render() {
     return (
@@ -30,7 +27,6 @@ class AuthenticateContainer extends Component {
       </div>
     );
   }
-
 }
 
 AuthenticateContainer.propTypes = {
@@ -42,11 +38,10 @@ AuthenticateContainer.contextTypes = {
   router: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
-  console.log(state);
+function mapStateToProps({ users }) {
   return {
-    isFetching: state.isFetching,
-    error: state.error,
+    isFetching: users.isFetching,
+    error: users.error
   };
 }
 

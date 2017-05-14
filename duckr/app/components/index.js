@@ -4,3 +4,4 @@ export Authenticate from './Authenticate/Authenticate';
 export FacebookAuthButton from './FacebookAuthButton/FacebookAuthButton';
 export Feed from './feed/feed';
 export Logout from './Logout/Logout';
+export Modal from './Modal/Modal';

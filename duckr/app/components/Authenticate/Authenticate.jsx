@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { centeredContainer, largeHeader, errorMsg } from 'sharedStyles/styles.css';
+import { centeredContainer, largeHeader, errorMsg } from '../../sharedStyles/styles.css';
 import { FacebookAuthButton } from 'components';
 
 Authenticate.propTypes = {
