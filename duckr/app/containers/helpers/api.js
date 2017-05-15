@@ -37,3 +37,20 @@ export function saveDuck(duck) {
     saveToUsersDucks(duck, duckId)
   ]).then(() => ({ ...duck, duckId }));
 }
+
+export function fetchUsersLikes(uid) {
+  return ref.child(`usersLikes/${uid}`).once('value').then(snapshot => snapshot.val() || {});
+}
+
+export function saveToUsersLikes(uid, duckId) {
+  return ref.child(`usersLikes/${uid}/${duckId}`).set(true);
+}
+export function deleteFromUsersLikes(uid, duckId) {
+  return ref.child(`usersLikes/${uid}/${duckId}`).set(null);
+}
+export function incrementNumberOfLikes(duckId) {
+  return ref.child(`likeCount/${duckId}`).transaction((currentValue = 0) => currentValue + 1);
+}
+export function decrementNumberOfLikes(duckId) {
+  return ref.child(`likeCount/${duckId}`).transaction((currentValue = 0) => currentValue - 1);
+}

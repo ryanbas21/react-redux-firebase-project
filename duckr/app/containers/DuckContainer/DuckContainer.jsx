@@ -1,22 +1,27 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Duck } from '../../components';
+import * as usersLikesActions from '../../redux/modules/userslikes';
 
 const { func, bool, number, object } = PropTypes;
 
 class DuckContainer extends Component {
-  constructor() {
-    super();
-    this.goToProfile = this.goToProfile.bind(this);
+  static contextTypes = {
+    router: PropTypes.object.isRequired
+  };
+  constructor(props, context) {
+    super(props, context);
+
+    this.goToProfile = ::this.goToProfile;
   }
-  static defaultProps = {};
   goToProfile(e) {
-    e.stopPropogation();
+    e.stopPropagation();
     this.context.router.push(`/${this.props.duck.uid}`);
   }
-  handleClick(e) {
-    e.stopPropogation();
-    this.context.router.push(`/duckDetail${this.props.duck.duckId}`);
+  handleClick = (e) => {
+    e.stopPropagation();
+    this.context.router.push(`/duckDetail/${this.props.duck.duckId}`);
   }
   render() {
     return (
@@ -50,7 +55,8 @@ DuckContainer.propTypes = {
   handleDeleteLike: func.isRequired,
   addAndHandleLike: func.isRequired
 };
-DuckContainer.contextTypes = {
-  router: PropTypes.object.isRequired
-};
-export default connect(mapStateToProps)(DuckContainer);
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(usersLikesActions, dispatch);
+}
+export default connect(mapStateToProps, mapDispatchToProps)(DuckContainer);
