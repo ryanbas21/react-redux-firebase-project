@@ -1,3 +1,6 @@
+import { fetchUsersDucks } from '../../containers/helpers/api';
+import { addMultipleDucks } from '../../redux/modules/ducks';
+
 const FETCHING_USERS_DUCKS = 'FETCHING_USERS_DUCKS';
 const FETCHING_USERS_DUCKS_ERROR = 'FETCHING_USERS_DUCKS_ERROR';
 const FETCHING_USERS_DUCKS_SUCCESS = 'FETCHING_USERS_DUCKS_SUCCESS';
@@ -11,7 +14,6 @@ function fetchingUsersDucks(uid) {
 }
 
 function fetchingUsersDucksError(error) {
-  console.warn(error);
   return {
     type: FETCHING_USERS_DUCKS_ERROR,
     error: 'Error fetching Users Duck Ids'
@@ -34,6 +36,22 @@ export function addSingleUsersDuck(uid, duckId) {
     duckId
   };
 }
+
+export const fetchAndHandleUsersDucks = uid => dispatch => {
+  dispatch(fetchingUsersDucks());
+  fetchUsersDucks(uid)
+    .then(ducks => dispatch(addMultipleDucks(ducks)))
+    .then(({ ducks }) =>
+      dispatch(
+        fetchingUsersDucksSuccess(
+          uid,
+          Object.keys(ducks).sort((a, b) => ducks[b].timestamp - ducks[a].timestamp),
+          Date.now()
+        )
+      )
+    )
+    .catch(error => dispatch(fetchingUsersDucksError(error)));
+};
 
 const initialUsersDuckState = {
   lastUpdated: 0,

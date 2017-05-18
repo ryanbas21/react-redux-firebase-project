@@ -20,7 +20,6 @@ class MainContainer extends Component {
           this.context.router.replace('feed');
         }
       } else {
-        console.log('remove fetching user');
         this.props.removeFetchingUser();
       }
     });

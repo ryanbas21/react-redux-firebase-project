@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 
-  // Initialize Firebase
+// Initialize Firebase
 const config = {
   apiKey: 'AIzaSyCMFOHIPVmrFknefzhAXpldZJgCo81x1bI',
   authDomain: 'duckr-3b94e.firebaseapp.com',
@@ -12,3 +12,5 @@ firebase.initializeApp(config);
 
 export const ref = firebase.database().ref();
 export const firebaseAuth = firebase.auth;
+export const usersDucksExpirationLength = 1000000;
+export const userExpirationLength = 1000000;

@@ -14,14 +14,15 @@ class DuckContainer extends Component {
     super(props, context);
 
     this.goToProfile = ::this.goToProfile;
+    this.handleClick = ::this.handleClick
   }
-  goToProfile(e) {
-    e.stopPropagation();
-    this.context.router.push(`/${this.props.duck.uid}`);
+  goToProfile (e) {
+    e.stopPropagation()
+    this.context.router.push('/' + this.props.duck.uid)
   }
-  handleClick = (e) => {
-    e.stopPropagation();
-    this.context.router.push(`/duckDetail/${this.props.duck.duckId}`);
+  handleClick (e) {
+    e.preventDefault()
+    this.context.router.push('/duckDetail/' + this.props.duck.duckId)
   }
   render() {
     return (
